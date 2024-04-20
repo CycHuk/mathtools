@@ -1,0 +1,83 @@
+// Gauss.module.scss
+
+.matrixTable {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.matrixTable th,
+.matrixTable td {
+	border: 1px solid #ddd;
+	padding: 0;
+}
+
+.equationCell {
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ccc;
+	text-align: center;
+	font-size: 16px;
+}
+
+.equationCell input[type='number'] {
+	width: 100%;
+	height: 100%;
+	border: none;
+	text-align: center;
+	font-size: 16px;
+}
+
+.equationCell input[type='number']:focus {
+	outline: none;
+	border-color: #007bff;
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.equationCell:last-child {
+	position: relative;
+}
+
+.equationCell:last-child::after {
+	content: 'x';
+	position: absolute;
+	bottom: 50%;
+	transform: translateY(50%);
+	right: -15px;
+	font-size: 16px;
+	color: #333;
+}
+
+// Gauss.module.scss
+
+.selectContainer {
+	margin-bottom: 20px;
+}
+
+.selectContainer label {
+	font-size: 18px;
+	margin-bottom: 10px;
+	display: block;
+}
+
+.selectContainer select {
+	width: 100%;
+	height: 40px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 5px 10px;
+	font-size: 16px;
+	outline: none;
+}
+
+.selectContainer select:focus {
+	border-color: #007bff;
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.matrixSize {
+	width: 100px;
+	height: 30px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 5px;
+}

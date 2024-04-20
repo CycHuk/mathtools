@@ -1,0 +1,48 @@
+/* Gauss.module.scss */
+
+.gauss-container {
+	padding: 20px;
+}
+
+.gauss-header {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+.linear-system-constructor {
+	margin-bottom: 20px;
+}
+
+.solve-button {
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.solve-button:hover {
+	background-color: #0056b3;
+}
+
+.solution-container {
+	margin-top: 20px;
+}
+
+.intermediate-systems-container {
+	margin-top: 20px;
+}
+
+.intermediate-system {
+	margin-top: 20px;
+}
+
+.intermediate-system-header {
+	font-size: 18px;
+}
+
+.mathjax-formula {
+	margin-top: 10px;
+}

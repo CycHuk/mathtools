@@ -1,0 +1,26 @@
+@font-face {
+	font-family: 'JetBrainsMono-Thin';
+	src: url('../fonts/JetBrainsMono-Thin.ttf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'JetBrainsMono-ExtraBold';
+	src: url('../fonts/JetBrainsMono-ExtraBold.ttf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+
+#root {
+	max-width: 1300px;
+	min-height: 100%;
+	padding: 15px;
+	margin-left: auto;
+	margin-right: auto;
+
+	display: flex;
+	flex-direction: column;
+
+	font-family: 'JetBrainsMono-Thin';
+}
