@@ -76,7 +76,7 @@ const topics = [
 	{
 		topic: 'Задача обработки экспериментальных данных физических экспериментов',
 		methods: [
-			{ name: 'Method 2.1', url: '/method2.1' },
+			{ name: 'полином Лагранжа', url: '/phys-data-analysis/lagrange' },
 			{ name: 'Method 2.2', url: '/method2.2' },
 		],
 	},

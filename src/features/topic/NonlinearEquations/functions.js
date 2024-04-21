@@ -3,9 +3,12 @@ const nerdamer = require('nerdamer/all')
 
 const { sqrt, sin, cos, tan, cot, abs, atan, acot, asin, acos } = Math
 
+export { sqrt, sin, cos, tan, cot, abs, atan, acot, asin, acos }
+
 export function evaluateFunction(funcStr, x) {
 	try {
-		var result = eval(funcStr)
+		// eslint-disable-next-line
+		let result = eval(funcStr)
 		return result
 	} catch (e) {
 		return null

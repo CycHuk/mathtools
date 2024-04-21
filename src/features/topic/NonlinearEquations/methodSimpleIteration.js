@@ -15,7 +15,7 @@ function SimpleIterationMethod(func, a, b, eps) {
 		const f = derivativeFunction(equation)
 		try {
 			const f_b = Math.abs(evaluateFunction(f, b))
-			if (f_b < 1 && f_b != 0) {
+			if (f_b < 1 && f_b !== 0) {
 				iterFunc = equation
 				x = b
 				break
@@ -23,7 +23,7 @@ function SimpleIterationMethod(func, a, b, eps) {
 		} catch (error) {}
 		try {
 			const f_a = Math.abs(evaluateFunction(f, a))
-			if (f_a < 1 && f_a != 0) {
+			if (f_a < 1 && f_a !== 0) {
 				iterFunc = equation
 				x = a
 				break
