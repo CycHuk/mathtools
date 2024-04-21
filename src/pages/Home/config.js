@@ -55,6 +55,10 @@ const topics = [
 				name: 'Метод Ньютона',
 				url: '/nonlinear-equations/newton',
 			},
+			{
+				name: 'Метод Мод. Ньютона',
+				url: '/nonlinear-equations/mod-newton',
+			},
 		],
 	},
 	{

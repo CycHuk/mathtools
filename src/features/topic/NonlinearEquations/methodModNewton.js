@@ -4,7 +4,7 @@ import {
 	replacePowerOperator,
 } from './functions.js'
 
-function newtonMethod(func, a, b, eps) {
+function modNewtonMethod(func, a, b, eps) {
 	if (evaluateFunction(func, a) * evaluateFunction(func, b) > 0) {
 		throw new Error('Функция должна иметь разные знаки на концах интервала')
 	}
@@ -38,7 +38,6 @@ function newtonMethod(func, a, b, eps) {
 		x = x - funcX / derFuncX
 
 		funcX = evaluateFunction(func, x)
-		derFuncX = evaluateFunction(firstDerivative, x)
 
 		iterations.push([iterCount, x, funcX, derFuncX])
 
@@ -53,4 +52,4 @@ function newtonMethod(func, a, b, eps) {
 	}
 }
 
-export default newtonMethod
+export default modNewtonMethod
