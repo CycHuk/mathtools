@@ -51,6 +51,10 @@ const topics = [
 				name: 'Метод Риддерса',
 				url: '/nonlinear-equations/ridder',
 			},
+			{
+				name: 'Метод Ньютона',
+				url: '/nonlinear-equations/newton',
+			},
 		],
 	},
 	{
