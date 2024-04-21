@@ -8,6 +8,7 @@ import NewtonPage from './Newton'
 import ModNewtonPage from './ModNewton'
 import SecantPage from './Secant'
 import MuellerPage from './Mueller'
+import SimpleIterationPage from './SimpleIteration'
 
 const NonlinearEquations = () => {
 	return (
@@ -20,6 +21,7 @@ const NonlinearEquations = () => {
 			<Route path='/mod-newton' element={<ModNewtonPage />} />
 			<Route path='/secant' element={<SecantPage />} />
 			<Route path='/mueller' element={<MuellerPage />} />
+			<Route path='/simple-iteration' element={<SimpleIterationPage />} />
 
 			<Route path='*' element={<Navigate to='/' replace />} />
 		</Routes>

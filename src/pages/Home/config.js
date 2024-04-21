@@ -67,6 +67,10 @@ const topics = [
 				name: 'Метод Мюллера',
 				url: '/nonlinear-equations/mueller',
 			},
+			{
+				name: 'Метод простых итераций',
+				url: '/nonlinear-equations/simple-iteration',
+			},
 		],
 	},
 	{
