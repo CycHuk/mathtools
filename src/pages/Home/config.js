@@ -32,8 +32,10 @@ const topics = [
 	{
 		topic: 'Решение нелинейных уравнений и их систем',
 		methods: [
-			{ name: 'Method 2.1', url: '/method2.1' },
-			{ name: 'Method 2.2', url: '/method2.2' },
+			{
+				name: 'Метод половинного деления',
+				url: '/nonlinear-equations/bisection',
+			},
 		],
 	},
 	{

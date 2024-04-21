@@ -37,7 +37,6 @@ const RelaxationPage = () => {
 		const copiedB = [...B]
 		try {
 			const solution = MethodRelaxation(copiedA, copiedB, precision)
-			console.log(solution)
 			setSolution(solution)
 			setDecision(true)
 		} catch {
