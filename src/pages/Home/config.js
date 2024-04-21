@@ -63,6 +63,10 @@ const topics = [
 				name: 'Метод Секущих',
 				url: '/nonlinear-equations/secant',
 			},
+			{
+				name: 'Метод Мюллера',
+				url: '/nonlinear-equations/mueller',
+			},
 		],
 	},
 	{
