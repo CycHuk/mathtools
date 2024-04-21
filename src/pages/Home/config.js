@@ -47,6 +47,10 @@ const topics = [
 				name: 'Метод Золотого сечения',
 				url: '/nonlinear-equations/golden-section',
 			},
+			{
+				name: 'Метод Риддерса',
+				url: '/nonlinear-equations/ridder',
+			},
 		],
 	},
 	{
