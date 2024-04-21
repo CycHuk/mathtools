@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import MathJax from 'react-mathjax'
 
-import FunctionInput from '../../../../components/functionInput'
-import RangeInput from '../../../../components/rangeInput'
+import FunctionInput from '../../../../components/constructors/functionInput'
+import RangeInput from '../../../../components/constructors/rangeInput'
 import PrecisionComponent from '../../../../components/constructors/Precision'
 
 import TableComponent from '../../../../components/table'
