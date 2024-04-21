@@ -1,11 +1,23 @@
-import { evaluateFunction } from './functions'
+import { evaluateFunction, derivativeFunction } from './functions'
 
 function SecantMethod(func, a, b, eps) {
 	if (evaluateFunction(func, a) * evaluateFunction(func, b) > 0) {
 		throw new Error('Функция должна иметь разные знаки на концах интервала')
 	}
 
-	let previousX = a
+	const firstDerivative = derivativeFunction(func)
+	let previousX
+
+	if (evaluateFunction(func, a) * evaluateFunction(firstDerivative, a) > 0) {
+		previousX = a
+	} else if (
+		evaluateFunction(func, b) * evaluateFunction(firstDerivative, b) >
+		0
+	) {
+		previousX = b
+	} else {
+		throw new Error(`f(x)*f'(x) < 0`)
+	}
 
 	const header = ['K', 'x(K-1)', 'f(x(K-1))', `x(K)`, `f(x(K))`]
 	let iterations = []
@@ -32,7 +44,11 @@ function SecantMethod(func, a, b, eps) {
 		iterCount++
 	}
 
-	return { x, header, iterations }
+	return {
+		x,
+		header,
+		iterations,
+	}
 }
 
 export default SecantMethod

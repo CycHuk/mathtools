@@ -48,8 +48,7 @@ const ModNewtonPage = () => {
 			setSolution(solution)
 			setDecision(true)
 		} catch (error) {
-			console.log(error)
-			toast.error('Функция должна иметь разные знаки на концах интервала')
+			toast.error(error.message)
 		}
 	}
 	return (

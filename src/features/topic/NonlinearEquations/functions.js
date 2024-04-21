@@ -19,11 +19,11 @@ export function evaluateFunction(funcStr, x) {
 }
 
 export function replacePowerOperator(expression) {
-	return expression.replace('**', '^')
+	return expression.replace(/\*\*/g, '^')
 }
 
 export function restorePowerOperator(expression) {
-	return expression.replace('^', '**')
+	return expression.replace(/\^/g, '**')
 }
 
 export function derivativeFunction(funcStr) {
