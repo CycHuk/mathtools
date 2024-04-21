@@ -59,6 +59,10 @@ const topics = [
 				name: 'Метод Мод. Ньютона',
 				url: '/nonlinear-equations/mod-newton',
 			},
+			{
+				name: 'Метод Секущих',
+				url: '/nonlinear-equations/secant',
+			},
 		],
 	},
 	{

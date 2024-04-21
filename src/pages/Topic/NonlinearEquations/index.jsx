@@ -6,6 +6,7 @@ import GoldenSectionPage from './GoldenSection'
 import RidderPage from './Ridder'
 import NewtonPage from './Newton'
 import ModNewtonPage from './ModNewton'
+import SecantPage from './Secant'
 
 const NonlinearEquations = () => {
 	return (
@@ -16,6 +17,7 @@ const NonlinearEquations = () => {
 			<Route path='/ridder' element={<RidderPage />} />
 			<Route path='/newton' element={<NewtonPage />} />
 			<Route path='/mod-newton' element={<ModNewtonPage />} />
+			<Route path='/secant' element={<SecantPage />} />
 
 			<Route path='*' element={<Navigate to='/' replace />} />
 		</Routes>
