@@ -6,7 +6,10 @@ const topics = [
 				name: 'Метод Крамера  для решения СЛАУ',
 				url: '/linear-systems/kramer',
 			},
-			{ name: 'Метод Гаусса для решения СЛАУ', url: '/linear-systems/gauss' },
+			{
+				name: 'Метод Гаусса для решения СЛАУ',
+				url: '/linear-systems/gauss',
+			},
 			{
 				name: 'Метод Гаусса-Жордана для решения СЛАУ',
 				url: '/linear-systems/gauss-jordan',
@@ -39,6 +42,10 @@ const topics = [
 			{
 				name: 'Метод Хорд',
 				url: '/nonlinear-equations/chord',
+			},
+			{
+				name: 'Метод Золотого сечения',
+				url: '/nonlinear-equations/golden-section',
 			},
 		],
 	},
