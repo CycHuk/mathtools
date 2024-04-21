@@ -36,6 +36,10 @@ const topics = [
 				name: 'Метод половинного деления',
 				url: '/nonlinear-equations/bisection',
 			},
+			{
+				name: 'Метод Хорд',
+				url: '/nonlinear-equations/chord',
+			},
 		],
 	},
 	{
