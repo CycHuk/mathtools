@@ -5,6 +5,16 @@ const { sqrt, sin, cos, tan, cot, abs, atan, acot, asin, acos } = Math
 
 export { sqrt, sin, cos, tan, cot, abs, atan, acot, asin, acos }
 
+// eslint-disable-next-line
+const e = 2.71828
+
+export function ln(x) {
+	if (typeof x !== 'number' || x <= 0) {
+		return NaN
+	}
+	return Math.log(x)
+}
+
 export function evaluateFunction(funcStr, x) {
 	try {
 		// eslint-disable-next-line

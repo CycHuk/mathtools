@@ -78,6 +78,7 @@ const topics = [
 		methods: [
 			{ name: 'полином Лагранжа', url: '/phys-data-analysis/lagrange' },
 			{ name: 'Интерполяция', url: '/phys-data-analysis/interpolation' },
+			{ name: 'Аппроксимация', url: '/phys-data-analysis/approximation' },
 		],
 	},
 ]
