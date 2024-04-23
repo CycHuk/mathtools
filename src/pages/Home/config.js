@@ -81,6 +81,15 @@ const topics = [
 			{ name: 'Аппроксимация', url: '/phys-data-analysis/approximation' },
 		],
 	},
+	{
+		topic: 'Численное дифференцирование',
+		methods: [
+			{
+				name: 'Конечно-разностная аппроксимация',
+				url: '/differentiation/finite-differences',
+			},
+		],
+	},
 ]
 
 export default topics
