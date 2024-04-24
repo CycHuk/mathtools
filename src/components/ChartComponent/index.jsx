@@ -44,7 +44,7 @@ const ChartComponent = ({ xValues, yValues, functionString }) => {
 		x <= Math.max(...xValues) + 1;
 		x += 0.1
 	) {
-		const y = evaluateFunction(funStr, x).toFixed(1)
+		const y = evaluateFunction(funStr, x)
 		functionData.push({ x: x.toFixed(1), y })
 	}
 

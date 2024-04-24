@@ -88,6 +88,10 @@ const topics = [
 				name: 'Конечно-разностная аппроксимация',
 				url: '/differentiation/finite-differences',
 			},
+			{
+				name: 'Метод неопределенных коэффициентов',
+				url: '/differentiation/uncertain-coefficients',
+			},
 		],
 	},
 ]
