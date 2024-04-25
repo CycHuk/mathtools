@@ -92,6 +92,10 @@ const topics = [
 				name: 'Метод Трапеции',
 				url: '/integration/trapezoid',
 			},
+			{
+				name: 'Метод Симсона (парабол)',
+				url: '/integration/simson',
+			},
 		],
 	},
 	{
