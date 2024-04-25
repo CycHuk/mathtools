@@ -82,6 +82,15 @@ const topics = [
 		],
 	},
 	{
+		topic: 'Численное интегрированиее',
+		methods: [
+			{
+				name: 'Метод Прямоугольника',
+				url: '/integration/rectangle',
+			},
+		],
+	},
+	{
 		topic: 'Численное дифференцирование',
 		methods: [
 			{
