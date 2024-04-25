@@ -5,6 +5,7 @@ import {
 import Lagrange from '../PhysDataAnalysis/Lagrange'
 
 function integrateSimpson(expr, lowerBound, upperBound, step) {
+	step = (upperBound - lowerBound) / step
 	function evaluate(expr, x) {
 		return evaluateFunction(expr, x)
 	}

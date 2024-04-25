@@ -36,7 +36,7 @@ function combineAndSortObjects(arr) {
 
 const SimsonPage = () => {
 	const [integralData, setIntegralData] = useState(null)
-	const [stepSize, setStepSize] = useState(0.1)
+	const [stepSize, setStepSize] = useState(5)
 
 	const [solution, setSolution] = useState(null)
 	const [decision, setDecision] = useState(false)
@@ -107,7 +107,7 @@ const SimsonPage = () => {
 			<IntegralInput onUpdate={handleIntegralUpdate} />
 			<div className={style.inputContainer}>
 				<label htmlFor='stepSize'>
-					Шаг (h):
+					Число делений (n):
 					<input
 						type='number'
 						id='stepSize'

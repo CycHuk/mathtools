@@ -1,6 +1,7 @@
 import { evaluateFunction } from '../NonlinearEquations/functions'
 
 function integrateTrapezoidal(expr, lowerBound, upperBound, step) {
+	step = (upperBound - lowerBound) / step
 	function evaluate(expr, x) {
 		return evaluateFunction(expr, x)
 	}

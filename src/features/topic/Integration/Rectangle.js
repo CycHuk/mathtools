@@ -1,6 +1,7 @@
 import { evaluateFunction } from '../NonlinearEquations/functions'
 
 function integrateRectangular(expr, lowerBound, upperBound, step, method) {
+	step = (upperBound - lowerBound) / step
 	function evaluate(expr, x) {
 		return evaluateFunction(expr, x)
 	}
