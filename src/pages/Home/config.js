@@ -88,6 +88,10 @@ const topics = [
 				name: 'Метод Прямоугольника',
 				url: '/integration/rectangle',
 			},
+			{
+				name: 'Метод Трапеции',
+				url: '/integration/trapezoid',
+			},
 		],
 	},
 	{
