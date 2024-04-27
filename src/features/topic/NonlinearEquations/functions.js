@@ -5,7 +5,7 @@ const { sqrt, sin, cos, tan, cot, abs, atan, acot, asin, acos } = Math
 
 export { sqrt, sin, cos, tan, cot, abs, atan, acot, asin, acos }
 
-export function evaluateFunction(funcStr, x) {
+export function evaluateFunction(funcStr, x, y = 0, z = 0) {
 	try {
 		// eslint-disable-next-line
 		let result = eval(funcStr)
@@ -57,9 +57,9 @@ export function extractVariable(func) {
 	return result.filter(item => !item.startsWith('-s'))
 }
 
-function extractVariableFromEquation(funcStr) {
+function extractVariableFromEquation(funcStr, ext = "y") {
 	const equation = nerdamer(funcStr)
-	const solution = equation.solveFor('y')
+	const solution = equation.solveFor(ext)
 	const solutionStr = restorePowerOperator(solution.toString())
 	return splitByComma(solutionStr)
 }
