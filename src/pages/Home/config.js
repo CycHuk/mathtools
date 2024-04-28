@@ -82,7 +82,7 @@ const topics = [
 		],
 	},
 	{
-		topic: 'Численное интегрированиее',
+		topic: 'Численное интегрирование',
 		methods: [
 			{
 				name: 'Метод Прямоугольника',
@@ -95,6 +95,10 @@ const topics = [
 			{
 				name: 'Метод Симсона (парабол)',
 				url: '/integration/simson',
+			},
+			{
+				name: 'Метод Чебышева',
+				url: '/integration/chebishev',
 			},
 		],
 	},
