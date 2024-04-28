@@ -6,6 +6,7 @@ import SimsonPage from './Simson'
 import ChebishevPage from './Chebishev'
 import LejandrGaussPage from './LejandrGauss'
 import TeylorPage from './Teylor'
+import MonteCarloPage from './MonteCarlo'
 
 const Integration = () => {
 	return (
@@ -16,6 +17,7 @@ const Integration = () => {
 			<Route path='/chebishev' element={<ChebishevPage />} />
 			<Route path='/lejandr-gauss' element={<LejandrGaussPage />} />
 			<Route path='/teylor' element={<TeylorPage />} />
+			<Route path='/monte-carlo' element={<MonteCarloPage />} />
 
 			<Route path='*' element={<Navigate to='/' replace />} />
 		</Routes>

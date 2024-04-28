@@ -108,6 +108,10 @@ const topics = [
 				name: 'Разложение в ряд Тейлора',
 				url: '/integration/teylor',
 			},
+			{
+				name: 'Метод Монте-Карло',
+				url: '/integration/monte-carlo',
+			},
 		],
 	},
 	{
