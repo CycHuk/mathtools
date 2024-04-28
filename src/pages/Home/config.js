@@ -104,6 +104,10 @@ const topics = [
 				name: 'Метод Лежандра-Гаусса',
 				url: '/integration/lejandr-gauss',
 			},
+			{
+				name: 'Разложение в ряд Тейлора',
+				url: '/integration/teylor',
+			},
 		],
 	},
 	{
