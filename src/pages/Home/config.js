@@ -100,6 +100,10 @@ const topics = [
 				name: 'Метод Чебышева',
 				url: '/integration/chebishev',
 			},
+			{
+				name: 'Метод Лежандра-Гаусса',
+				url: '/integration/lejandr-gauss',
+			},
 		],
 	},
 	{
