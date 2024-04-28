@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify'
 import MainLayout from './layouts/MainLayout'
 
 import Home from './pages/Home'
+import Docs from './pages/Docs'
 
 import Topic from './pages/Topic'
 
@@ -17,6 +18,7 @@ function App() {
 			<MainLayout>
 				<Routes>
 					<Route path='/' element={<Home />} />
+					<Route path='/docs' element={<Docs />} />
 
 					<Route path='*' element={<Topic />} />
 				</Routes>
