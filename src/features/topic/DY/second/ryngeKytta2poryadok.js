@@ -11,6 +11,38 @@ function calculator(fStrix, x_i, y_i, h){
     return res
 }
 
+// func: y' = 10y + x**2
+// y(2) = 3
+// h = 0.1
+// x ∊ [2, 3]
+// ex: ("10y + x**2", 2, 3, 0.1, 10)
+/* return:
+    {
+        0: {
+            xi: ...,
+            yi: ...,
+            k1: ...,
+            k2: ...,
+            y_(i+1): ...,
+        },
+        1: {
+            xi: ...,
+            yi: ...,
+            k1: ...,
+            k2: ...,
+            y_(i+1): ...,
+        },
+        ...
+        n: {
+            xi: ...,
+            yi: ...,
+            k1: ...,
+            k2: ...,
+            y_(i+1): ...,
+        }
+    }
+
+    */
 export function ryngeKytta3poryadok(fStrix, x0, y0, h, n){
     return wrapper(calculator)(fStrix, x0, y0, h, n)
 }

@@ -12,6 +12,35 @@ function calculator(fStrix, x_i, y_i, h){
     return res
 }
 
+// func: y' = 10y + x**2
+// y(2) = 3
+// h = 0.1
+// x ∊ [2, 3]
+// ex: ("10y + x**2", 2, 3, 0.1, 10)
+/* return:
+    {
+        0: {
+            xi: ...,
+            yi: ...,
+            y_(i+1): ...,
+            f(x_i, y_i): ...
+        },
+        1: {
+            xi: ...,
+            yi: ...,
+            y_(i+1): ...,
+            f(x_i, y_i): ...
+        },
+        ...
+        n: {
+            xi: ...,
+            yi: ...,
+            y_(i+1): ...,
+            f(x_i, y_i): ...
+        }
+    }
+
+    */
 export function eulerSPerechetom(fStrix, x0, y0, h, n){
     return wrapper(calculator)(fStrix, x0, y0, h, n)
 }
