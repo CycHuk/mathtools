@@ -80,6 +80,10 @@ const topics = [
 			{ name: 'Method 2.2', url: '/method2.2' },
 		],
 	},
+	{
+		topic: 'Решение ОДУ',
+		methods: [{ name: 'ОДУ первого порядка', url: '/dy/first-order' }],
+	},
 ]
 
 export default topics
