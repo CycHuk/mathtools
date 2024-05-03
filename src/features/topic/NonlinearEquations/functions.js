@@ -5,6 +5,7 @@ const { sqrt, sin, cos, tan, cot, abs, atan, acot, asin, acos } = Math
 
 export { sqrt, sin, cos, tan, cot, abs, atan, acot, asin, acos }
 
+
 export function evaluateFunction(funcStr, x, y = 0, z = 0) {
 	try {
 		// eslint-disable-next-line

@@ -11,10 +11,10 @@ const Header = () => {
 			<nav>
 				<ul className={style.navList}>
 					<li>
-						<Link to='/'>Главная</Link>
+						<Link to='/'>Калькулятор</Link>
 					</li>
 					<li>
-						<Link to='/about'>О нас</Link>
+						<Link to='/about'>Документация</Link>
 					</li>
 					<li>
 						<Link to='/contact'>Контакты</Link>
