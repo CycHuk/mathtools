@@ -1,0 +1,21 @@
+.rectanglePage {
+	input[type='number'] {
+		width: 100px;
+		padding: 8px;
+		margin-bottom: 10px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		box-sizing: border-box;
+	}
+
+	.solveButton {
+		background-color: #007bff;
+		color: white;
+		border: none;
+		padding: 10px 20px;
+		border-radius: 5px;
+		cursor: pointer;
+		font-size: 16px;
+		margin-top: 10px;
+	}
+}

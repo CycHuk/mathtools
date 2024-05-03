@@ -1,0 +1,43 @@
+// IntegralInput.module.scss
+
+.integralInputContainer {
+	margin-bottom: 10px;
+}
+
+.integralInputContainer label {
+	font-weight: bold;
+}
+
+.integralInputContainer input {
+	margin-left: 5px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+.integralInputContainer span {
+	margin-left: 5px;
+}
+
+// Стили для интервала интегрирования
+.integrationBounds {
+	display: flex;
+	align-items: center;
+	margin-top: 5px;
+}
+
+.integrationBounds label {
+	margin-right: 5px;
+}
+
+.integrationBounds input {
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+.integrationBounds::before {
+	content: '∫';
+	margin-right: 5px;
+	font-size: 20px;
+}

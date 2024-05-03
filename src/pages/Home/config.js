@@ -82,6 +82,39 @@ const topics = [
 		],
 	},
 	{
+		topic: 'Численное интегрирование',
+		methods: [
+			{
+				name: 'Метод Прямоугольника',
+				url: '/integration/rectangle',
+			},
+			{
+				name: 'Метод Трапеции',
+				url: '/integration/trapezoid',
+			},
+			{
+				name: 'Метод Симсона (парабол)',
+				url: '/integration/simson',
+			},
+			{
+				name: 'Метод Чебышева',
+				url: '/integration/chebishev',
+			},
+			{
+				name: 'Метод Лежандра-Гаусса',
+				url: '/integration/lejandr-gauss',
+			},
+			{
+				name: 'Разложение в ряд Тейлора',
+				url: '/integration/teylor',
+			},
+			{
+				name: 'Метод Монте-Карло',
+				url: '/integration/monte-carlo',
+			},
+		],
+	},
+	{
 		topic: 'Численное дифференцирование',
 		methods: [
 			{
