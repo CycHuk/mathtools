@@ -127,6 +127,13 @@ const topics = [
 			},
 		],
 	},
+	{
+		topic: 'Решение ОДУ',
+		methods: [
+			{ name: 'ОДУ первого порядка', url: '/dy/first-order' },
+			{ name: 'ОДУ второго порядка', url: '/dy/second-order' },
+		],
+	},
 ]
 
 export default topics
