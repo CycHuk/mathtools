@@ -1,15 +1,29 @@
-import { evaluateFunction } from '../../NonlinearEquations/functions.js'
-import { wrapper } from '../iteratorTemplate'
+import {wrapper} from "../iteratorTemplate";
 const nerdamer = require('nerdamer/all')
+
+export function rond(x){
+	if (x.includes("/")){
+		let a = x.split("/")
+		return String(Math.round(100 * parseFloat(a[0]) / parseFloat(a[1]))/ 100)
+	}
+	return x
+}
+
 
 function calculator(fStrix, x_i, y_i, h) {
 	let res = {}
-	let f = `z = ${y_i} + ${h} * ${fStrix
+	let f = `z=${y_i}+${h}*(${fStrix
 		.replaceAll('x', x_i + h)
-		.replaceAll('y', 'z')}`
-	f = nerdamer(f).solveFor('z')
-	res['y_(i+1)'] = f.slice(f.indexOf('=') + 1, f.length)
+		.replaceAll('y', 'z')})`
+	try {
+		f = rond(nerdamer(f).solveFor('z').toString())
+	} catch (ex){
+		res['y_(i+1)'] = y_i
+		res['f(x_i, y_i)'] = f
+		return res
+	}
 	res['f(x_i, y_i)'] = f
+	res['y_(i+1)'] = f.slice(f.indexOf('=') + 1, f.length)
 	return res
 }
 
@@ -45,3 +59,5 @@ function calculator(fStrix, x_i, y_i, h) {
 export function eulerNeYavnii(fStrix, x0, y0, h, n) {
 	return wrapper(calculator)(fStrix, x0, y0, h, n)
 }
+
+

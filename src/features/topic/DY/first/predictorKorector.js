@@ -1,14 +1,25 @@
-import {evaluateFunction} from '../../NonlinearEquations/functions.js'
+import {rond} from "./eulerNeYavnii";
 import {wrapper} from "../iteratorTemplate";
-import {calculator as eulerYabnii} from "./eulerYavniy";
+
+const nerdamer = require('nerdamer/all')
+
+
+function eulerYabnii(fStrix, x_i, y_i, h){
+    let res = {};
+    let f = rond(nerdamer(fStrix).evaluate({x: x_i, y: y_i}).toString())
+    res["y_(i+1)"] = y_i + h * f
+    res["f(x_i, y_i)"] = f
+    return res
+}
+
 
 function calculator(fStrix, x_i, y_i, h){
     let res = {};
     let y_pred = eulerYabnii(fStrix, x_i, y_i, h)
-    let y_corr = eulerYabnii(fStrix, x_i, y_pred, h)
-    res["y_(i+1)"] = y_corr
-    res["y_pred"] = y_pred
-    res["y_corr"] = y_corr
+    let y_corr = eulerYabnii(fStrix, x_i, y_pred["y_(i+1)"], h)
+    res["y_(i+1)"] = y_corr["y_(i+1)"]
+    res["y_pred"] = y_pred["y_(i+1)"]
+    res["y_corr"] = res["y_(i+1)"]
     return res
 }
 
@@ -47,3 +58,6 @@ function calculator(fStrix, x_i, y_i, h){
 export function predictorKorector(fStrix, x0, y0, h, n){
     return wrapper(calculator)(fStrix, x0, y0, h, n)
 }
+
+console.log(predictorKorector("10*y+x**2", 1, 0, 0.1, 10))
+
