@@ -77,7 +77,54 @@ const topics = [
 		topic: 'Задача обработки экспериментальных данных физических экспериментов',
 		methods: [
 			{ name: 'полином Лагранжа', url: '/phys-data-analysis/lagrange' },
-			{ name: 'Method 2.2', url: '/method2.2' },
+			{ name: 'Интерполяция', url: '/phys-data-analysis/interpolation' },
+			{ name: 'Аппроксимация', url: '/phys-data-analysis/approximation' },
+		],
+	},
+	{
+		topic: 'Численное интегрирование',
+		methods: [
+			{
+				name: 'Метод Прямоугольника',
+				url: '/integration/rectangle',
+			},
+			{
+				name: 'Метод Трапеции',
+				url: '/integration/trapezoid',
+			},
+			{
+				name: 'Метод Симсона (парабол)',
+				url: '/integration/simson',
+			},
+			{
+				name: 'Метод Чебышева',
+				url: '/integration/chebishev',
+			},
+			{
+				name: 'Метод Лежандра-Гаусса',
+				url: '/integration/lejandr-gauss',
+			},
+			{
+				name: 'Разложение в ряд Тейлора',
+				url: '/integration/teylor',
+			},
+			{
+				name: 'Метод Монте-Карло',
+				url: '/integration/monte-carlo',
+			},
+		],
+	},
+	{
+		topic: 'Численное дифференцирование',
+		methods: [
+			{
+				name: 'Конечно-разностная аппроксимация',
+				url: '/differentiation/finite-differences',
+			},
+			{
+				name: 'Метод неопределенных коэффициентов',
+				url: '/differentiation/uncertain-coefficients',
+			},
 		],
 	},
 ]
