@@ -1,0 +1,70 @@
+.modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+	max-width: 90%;
+	max-height: 100%;
+	overflow: auto;
+	border: 1px solid #ccc;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pdfViewerCanvasWrapper {
+	overflow-y: scroll; /* Используйте значение scroll */
+	height: 85vh;
+	border: 1px solid #ccc;
+}
+
+.pdfViewerCanvasWrapper::-webkit-scrollbar {
+	/* Скрыть стандартный скроллбар для WebKit (Chrome, Safari, etc.) */
+	display: none;
+}
+
+.pdfViewerCanvasWrapper {
+	scrollbar-width: none; /* Скрыть стандартный скроллбар для Firefox */
+}
+
+.pdfViewerCanvasWrapper:hover::-webkit-scrollbar {
+	/* Показать скроллбар при наведении для WebKit */
+	display: block;
+}
+
+.pdfViewerPagination {
+	margin-top: 10px;
+
+	span {
+		margin-right: 10px;
+	}
+}
+
+.pdfViewerZoomButtons {
+	margin-bottom: 10px;
+}
+
+.pdfViewerCloseButton {
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.pdfViewerButton {
+	margin-right: 10px;
+	padding: 5px 10px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.pdfViewerButton:hover {
+	background-color: #0056b3;
+}
+
+.pdfViewerButton:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
