@@ -16,9 +16,6 @@ const Header = () => {
 					<li>
 						<Link to='/docs'>Документация</Link>
 					</li>
-					<li>
-						<Link to='/contact'>Контакты</Link>
-					</li>
 				</ul>
 			</nav>
 		</header>
