@@ -1,11 +1,13 @@
 // Gauss.jsx
 
 import React, { useState } from 'react'
-import MathJax from 'react-mathjax'
 import LinearSystemConstructor from '../../../../components/constructors/LinearSystems'
 import MethodGauss from '../../../../features/topic/LinearSystems/methodGauss'
 
 import style from './Gauss.module.scss'
+
+import 'katex/dist/katex.min.css'
+import Latex from 'react-latex-next'
 
 const formatMatrix = matrix => {
 	return `\\begin{pmatrix}
@@ -59,14 +61,9 @@ const GaussPage = () => {
 								Шаг {index + 1}:
 							</h3>
 							<div>
-								<MathJax.Provider>
-									<MathJax.Node
-										className={style['mathjax-formula']}
-										formula={`[A | b] = ${formatMatrix(
-											combineMatrix(system.A, system.b)
-										)}`}
-									/>
-								</MathJax.Provider>
+								<Latex>{`$$[A | b] = ${formatMatrix(
+									combineMatrix(system.A, system.b)
+								)}$$`}</Latex>
 							</div>
 						</div>
 					))}
@@ -75,12 +72,7 @@ const GaussPage = () => {
 			{decision && (
 				<div className={style['solution-container']}>
 					<h2>Ответ:</h2>
-					<MathJax.Provider>
-						<MathJax.Node
-							className={style['mathjax-formula']}
-							formula={`x = [${solution.map(num => num).join(', ')}]`}
-						/>
-					</MathJax.Provider>
+					<Latex>{`$$x = [${solution.map(num => num).join(', ')}]$$`}</Latex>
 				</div>
 			)}
 		</div>

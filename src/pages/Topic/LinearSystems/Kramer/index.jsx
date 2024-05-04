@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import MathJax from 'react-mathjax'
 import LinearSystemConstructor from '../../../../components/constructors/LinearSystems'
 import MethodKramer from '../../../../features/topic/LinearSystems/methodKramer'
 
 import style from './Kramer.module.scss'
+
+import 'katex/dist/katex.min.css'
+import Latex from 'react-latex-next'
 
 const formatMatrix = matrix => {
 	return `\\begin{vmatrix}
@@ -45,38 +47,24 @@ const KramerPage = () => {
 			{decision && (
 				<div className={style['solution-container']}>
 					<h2>Решение:</h2>
-					<MathJax.Provider>
-						<div>
-							<MathJax.Node
-								formula={
-									`A = ` +
-									formatMatrix(solution.mainDeterminant.matrix) +
-									' = ' +
-									solution.mainDeterminant.determinant
-								}
-							/>
-							<ul>
-								{solution.replacedMatrices.map((item, index) => (
-									<li key={index}>
-										<MathJax.Node
-											formula={
-												`A${index} = ` +
-												formatMatrix(item.matrix) +
-												' = ' +
-												item.determinant
-											}
-										/>
-										<MathJax.Node
-											formula={`x${index} = \\frac{A${index}}{A} = \\frac{${item.determinant}}{${solution.mainDeterminant.determinant}} = ${solution.x[index]}`}
-										/>
-									</li>
-								))}
-							</ul>
+					<div>
+						<Latex>{`$$A = ${formatMatrix(solution.mainDeterminant.matrix)} = ${
+							solution.mainDeterminant.determinant
+						}$$`}</Latex>
+						<ul>
+							{solution.replacedMatrices.map((item, index) => (
+								<li key={index}>
+									<Latex>{`$$A${index} = ${formatMatrix(item.matrix)} = ${
+										item.determinant
+									}$$`}</Latex>
+									<Latex>{`$$x${index} = \\frac{A${index}}{A} = \\frac{${item.determinant}}{${solution.mainDeterminant.determinant}} = ${solution.x[index]}$$`}</Latex>
+								</li>
+							))}
+						</ul>
 
-							<h3>Ответ:</h3>
-							<MathJax.Node formula={`x = [${solution.x.join(', ')}]`} />
-						</div>
-					</MathJax.Provider>
+						<h3>Ответ:</h3>
+						<Latex>{`$$x = [${solution.x.join(', ')}]$$`}</Latex>
+					</div>
 				</div>
 			)}
 		</div>

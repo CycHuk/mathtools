@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import MathJax from 'react-mathjax'
 
 import CoordinateInput from '../../../../components/constructors/CoordinateInput'
 import ChartComponent from '../../../../components/ChartComponent'
 import LagrangeInterpolation from '../../../../features/topic/PhysDataAnalysis/Lagrange'
 
 import style from './Lagrange.module.scss'
+
+import 'katex/dist/katex.min.css'
+import Latex from 'react-latex-next'
 
 const LagrangePage = () => {
 	const [yValues, setYValues] = useState([])
@@ -43,10 +45,8 @@ const LagrangePage = () => {
 			</button>
 			{decision && (
 				<div className={style['solution-container']}>
-					<MathJax.Provider>
-						<h3>Формула:</h3>
-						<MathJax.Node formula={`f(x) = ${solution} `} />
-					</MathJax.Provider>
+					<h3>Формула:</h3>
+					<Latex>{`$$f(x) = ${solution}$$`}</Latex>
 					<h3>График:</h3>
 					<ChartComponent
 						xValues={xValues}
