@@ -6,7 +6,7 @@ import styles from './PdfViewer.module.scss'
 const MyPdfViewer = ({ pdfUrl, isOpen, closeModal }) => {
 	const [page, setPage] = useState(1)
 	const [pages, setPages] = useState(null)
-	const [scale, setScale] = useState(1.6)
+	const [scale, setScale] = useState(1.3)
 	const canvasEl = useRef(null)
 	const [loading, numPages] = usePdf({
 		file: pdfUrl,
@@ -39,6 +39,16 @@ const MyPdfViewer = ({ pdfUrl, isOpen, closeModal }) => {
 		if (page < pages) {
 			setPage(page + 1)
 		}
+	}
+
+	const handleDownloadPdf = () => {
+		// Создай ссылку для скачивания PDF
+		const link = document.createElement('a')
+		link.href = pdfUrl
+		link.download = 'document.pdf' // Имя файла для скачивания
+		document.body.appendChild(link)
+		link.click()
+		document.body.removeChild(link)
 	}
 
 	const renderPagination = () => {
@@ -77,13 +87,26 @@ const MyPdfViewer = ({ pdfUrl, isOpen, closeModal }) => {
 			<div className={styles.pdfViewerContainer}>
 				{loading && <span>Loading...</span>}
 				<div className={styles.pdfViewerContent}>
-					<div className={styles.pdfViewerZoomButtons}>
-						<button className={styles.pdfViewerButton} onClick={handleZoomIn}>
-							Увеличить
-						</button>
-						<button className={styles.pdfViewerButton} onClick={handleZoomOut}>
-							Уменьшить
-						</button>
+					<div className={styles.pdfViewerControls}>
+						<div className={styles.pdfViewerZoomButtons}>
+							<button className={styles.pdfViewerButton} onClick={handleZoomIn}>
+								Увеличить
+							</button>
+							<button
+								className={styles.pdfViewerButton}
+								onClick={handleZoomOut}
+							>
+								Уменьшить
+							</button>
+						</div>
+						<div className={styles.pdfViewerDownloadButton}>
+							<button
+								className={styles.pdfViewerButton}
+								onClick={handleDownloadPdf}
+							>
+								Скачать PDF
+							</button>
+						</div>
 					</div>
 					<div className={styles.pdfViewerCanvasWrapper}>
 						<canvas ref={canvasEl} className={styles.pdfViewerCanvas} />
