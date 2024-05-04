@@ -15,7 +15,7 @@
 
 .pdfViewerCanvasWrapper {
 	overflow-y: scroll; /* Используйте значение scroll */
-	height: 85vh;
+	height: 80vh;
 	border: 1px solid #ccc;
 }
 
@@ -41,12 +41,7 @@
 	}
 }
 
-.pdfViewerZoomButtons {
-	margin-bottom: 10px;
-}
-
 .pdfViewerCloseButton {
-	margin-top: 10px;
 	cursor: pointer;
 }
 
@@ -58,6 +53,54 @@
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
+}
+
+.pdfViewerButton:hover {
+	background-color: #0056b3;
+}
+
+.pdfViewerButton:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
+
+.pdfViewerTopRight {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.pdfViewerButton:hover {
+	background-color: #0056b3;
+}
+
+.pdfViewerButton:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
+
+.pdfViewerControls {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.pdfViewerZoomButtons {
+	margin-right: 10px;
+}
+
+.pdfViewerDownloadButton {
+	margin-left: 10px;
+}
+
+.pdfViewerButton {
+	padding: 5px 10px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-bottom: 10px;
 }
 
 .pdfViewerButton:hover {
