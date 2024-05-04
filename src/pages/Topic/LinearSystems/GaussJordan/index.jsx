@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import MathJax from 'react-mathjax'
 import LinearSystemConstructor from '../../../../components/constructors/LinearSystems'
 import Method from '../../../../features/topic/LinearSystems/methodGaussJordan'
 
 import style from './GaussJordan.module.scss'
+
+import 'katex/dist/katex.min.css'
+import Latex from 'react-latex-next'
 
 const formatMatrix = matrix => {
 	return `\\begin{pmatrix}
@@ -56,12 +58,7 @@ const GaussJordanPage = () => {
 								Шаг {index + 1}:
 							</h3>
 							<div>
-								<MathJax.Provider>
-									<MathJax.Node
-										className={style['mathjax-formula']}
-										formula={`[A | b] = ${formatMatrix(system.A)}`}
-									/>
-								</MathJax.Provider>
+								<Latex>{`$$[A | b] = ${formatMatrix(system.A)}$$`}</Latex>
 							</div>
 						</div>
 					))}
@@ -70,12 +67,7 @@ const GaussJordanPage = () => {
 			{decision && (
 				<div className={style['solution-container']}>
 					<h2>Ответ:</h2>
-					<MathJax.Provider>
-						<MathJax.Node
-							className={style['mathjax-formula']}
-							formula={`x = [${solution.map(num => num).join(', ')}]`}
-						/>
-					</MathJax.Provider>
+					<Latex>{`$$x = [${solution.map(num => num).join(', ')}]$$`}</Latex>
 				</div>
 			)}
 		</div>

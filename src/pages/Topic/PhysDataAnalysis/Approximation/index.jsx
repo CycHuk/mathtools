@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import MathJax from 'react-mathjax'
 
 import CoordinateInput from '../../../../components/constructors/CoordinateInput'
 import ChartComponent from '../../../../components/ChartComponent'
@@ -7,6 +6,9 @@ import ChartComponent from '../../../../components/ChartComponent'
 import approximatePoints from '../../../../features/topic/PhysDataAnalysis/Approximation'
 
 import style from './Approximation.module.scss'
+
+import 'katex/dist/katex.min.css'
+import Latex from 'react-latex-next'
 
 function createPoints(xValues, yValues) {
 	const points = []
@@ -114,10 +116,9 @@ const ApproximationPage = () => {
 			</button>
 			{decision && (
 				<div className={style['solution-container']}>
-					<MathJax.Provider>
-						<h3>Формула:</h3>
-						<MathJax.Node formula={`${solution.original} `} />
-					</MathJax.Provider>
+					<h3>Формула:</h3>
+					<Latex>{`$$${solution.original}$$`}</Latex>
+
 					<h3>График:</h3>
 					<ChartComponent
 						xValues={xValues}

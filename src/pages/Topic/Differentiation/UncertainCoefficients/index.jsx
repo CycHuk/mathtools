@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import FunctionInput from '../../../../components/constructors/functionInput'
-import MathJax from 'react-mathjax'
 import Method from '../../../../features/topic/Differentiation/UncertainCoefficients'
 import style from './UncertainCoefficients.module.scss'
+
+import 'katex/dist/katex.min.css'
+import Latex from 'react-latex-next'
 
 const UncertainCoefficientsPage = () => {
 	const [functionValue, setFunctionValue] = useState('')
@@ -57,39 +59,47 @@ const UncertainCoefficientsPage = () => {
 		if (derivativeOrder === 1) {
 			if (errorOrder === 2) {
 				formula = (
-					<MathJax.Node
-						formula={`-\\frac{1}{2} \\cdot \\frac{f(x - h) - f(x + h)}{h}`}
-					/>
+					<Latex>
+						{'$$-\\frac{1}{2} \\cdot \\frac{f(x - h) - f(x + h)}{h}$$'}
+					</Latex>
 				)
 			} else if (errorOrder === 4) {
 				formula = (
-					<MathJax.Node
-						formula={`\\frac{1}{12} \\cdot \\frac{f(x - 2h) - 2f(x - h) + 2f(x + h) - f(x + 2h)}{h}`}
-					/>
+					<Latex>
+						{
+							'$$\\frac{1}{12} \\cdot \\frac{f(x - 2h) - 2f(x - h) + 2f(x + h) - f(x + 2h)}{h}$$'
+						}
+					</Latex>
 				)
 			} else if (errorOrder === 6) {
 				formula = (
-					<MathJax.Node
-						formula={`-\\frac{1}{60} \\cdot \\frac{f(x - 3h) - 3f(x - 2h) + 3f(x - h) - 3f(x + h) + 3f(x + 2h) - f(x + 3h)}{h}`}
-					/>
+					<Latex>
+						{
+							'$$-\\frac{1}{60} \\cdot \\frac{f(x - 3h) - 3f(x - 2h) + 3f(x - h) - 3f(x + h) + 3f(x + 2h) - f(x + 3h)}{h}$$'
+						}
+					</Latex>
 				)
 			}
 		} else if (derivativeOrder === 2) {
 			if (errorOrder === 2) {
 				formula = (
-					<MathJax.Node formula={`\\frac{f(x - h) - 2f(x) + f(x + h)}{h^2}`} />
+					<Latex>{'$$\\frac{f(x - h) - 2f(x) + f(x + h)}{h^2}$$'}</Latex>
 				)
 			} else if (errorOrder === 4) {
 				formula = (
-					<MathJax.Node
-						formula={`-\\frac{1}{12} \\cdot \\frac{f(x - 2h) - 4f(x - h) + 5f(x) - 4f(x + h) + f(x + 2h)}{h^2}`}
-					/>
+					<Latex>
+						{
+							'$$-\\frac{1}{12} \\cdot \\frac{f(x - 2h) - 4f(x - h) + 5f(x) - 4f(x + h) + f(x + 2h)}{h^2}$$'
+						}
+					</Latex>
 				)
 			} else if (errorOrder === 6) {
 				formula = (
-					<MathJax.Node
-						formula={`\\frac{1}{90} \\cdot \\frac{f(x - 3h) - 3f(x - 2h) + 3f(x - h) - 49f(x) + 3f(x + h) - 3f(x + 2h) + f(x + 3h)}{h^2}`}
-					/>
+					<Latex>
+						{
+							'$$\\frac{1}{90} \\cdot \\frac{f(x - 3h) - 3f(x - 2h) + 3f(x - h) - 49f(x) + 3f(x + h) - 3f(x + 2h) + f(x + 3h)}{h^2}$$'
+						}
+					</Latex>
 				)
 			}
 		}
@@ -180,7 +190,7 @@ const UncertainCoefficientsPage = () => {
 			{formula && (
 				<div>
 					<h2>Формула метода наименьших квадратов:</h2>
-					<MathJax.Provider>{formula}</MathJax.Provider>
+					{formula}
 				</div>
 			)}
 			{decision && (

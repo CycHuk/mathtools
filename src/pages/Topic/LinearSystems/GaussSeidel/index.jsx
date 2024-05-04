@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import MathJax from 'react-mathjax'
 
 import LinearSystemConstructor from '../../../../components/constructors/LinearSystems'
 import PrecisionComponent from '../../../../components/constructors/Precision'
@@ -12,6 +11,9 @@ import style from './GaussSeidel.module.scss'
 
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+
+import 'katex/dist/katex.min.css'
+import Latex from 'react-latex-next'
 
 const GaussSeidelPage = () => {
 	const [A, setA] = useState([])
@@ -66,10 +68,8 @@ const GaussSeidelPage = () => {
 			</button>
 			{decision && (
 				<div className={style['solution-container']}>
-					<MathJax.Provider>
-						<h3>Ответ:</h3>
-						<MathJax.Node formula={`x = [${solution.x.join(', ')}]`} />
-					</MathJax.Provider>
+					<h3>Ответ:</h3>
+					<Latex>{`$$x = [${solution.x.join(', ')}]$$`}</Latex>
 				</div>
 			)}
 			{decision && <TableComponent solution={solution} />}

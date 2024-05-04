@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import MathJax from 'react-mathjax'
 
 import FunctionInput from '../../../../components/constructors/functionInput'
 import RangeInput from '../../../../components/constructors/rangeInput'
@@ -13,6 +12,9 @@ import 'react-toastify/dist/ReactToastify.css'
 import MethodGoldenSection from '../../../../features/topic/NonlinearEquations/methodGoldenSection'
 
 import style from './GoldenSection.module.scss'
+
+import 'katex/dist/katex.min.css'
+import Latex from 'react-latex-next'
 
 const GoldenSectionPage = () => {
 	const [functionValue, setFunctionValue] = useState('')
@@ -67,10 +69,8 @@ const GoldenSectionPage = () => {
 			</button>
 			{decision && (
 				<div className={style['solution-container']}>
-					<MathJax.Provider>
-						<h3>Ответ:</h3>
-						<MathJax.Node formula={`x = ${solution.x} `} />
-					</MathJax.Provider>
+					<h3>Ответ:</h3>
+					<Latex>{`$$x = ${solution.x} $$`}</Latex>
 				</div>
 			)}
 			{decision && <TableComponent solution={solution} />}

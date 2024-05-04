@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import FunctionInput from '../../../../components/constructors/functionInput'
 
-import MathJax from 'react-mathjax'
-
 import MethodFiniteDifferences from '../../../../features/topic/Differentiation/FiniteDifferences'
 
 import style from './FiniteDifferences.module.scss'
+
+import 'katex/dist/katex.min.css'
+import Latex from 'react-latex-next'
 
 const FiniteDifferencesPage = () => {
 	const [functionValue, setFunctionValue] = useState('')
@@ -83,25 +84,19 @@ const FiniteDifferencesPage = () => {
 							<tr>
 								<td>Правая разность</td>
 								<td>
-									<MathJax.Provider>
-										<MathJax.Node formula={`\\frac{f(x + h) - f(x)}{h}`} />
-									</MathJax.Provider>
+									<Latex>{'$$\\frac{f(x + h) - f(x)}{h}$$'}</Latex>
 								</td>
 							</tr>
 							<tr>
 								<td>Левая разность</td>
 								<td>
-									<MathJax.Provider>
-										<MathJax.Node formula={`\\frac{f(x) - f(x - h)}{h}`} />
-									</MathJax.Provider>
+									<Latex>{'$$\\frac{f(x) - f(x - h)}{h}$$'}</Latex>
 								</td>
 							</tr>
 							<tr>
 								<td>Центральная разность</td>
 								<td>
-									<MathJax.Provider>
-										<MathJax.Node formula={`\\frac{f(x + h) - f(x - h)}{2h}`} />
-									</MathJax.Provider>
+									<Latex>{'$$\\frac{f(x + h) - f(x - h)}{2h}$$'}</Latex>
 								</td>
 							</tr>
 						</tbody>
