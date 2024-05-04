@@ -7,11 +7,13 @@ import { Link } from 'react-router-dom'
 const Header = () => {
 	return (
 		<header className={style.header}>
-			<h1>Математические методы</h1>
+			<Link to='/'>
+				<h1>Математические методы</h1>
+			</Link>
 			<nav>
 				<ul className={style.navList}>
 					<li>
-						<Link to='/'>Калькулятор</Link>
+						<Link to='/calc'>Калькулятор</Link>
 					</li>
 					<li>
 						<Link to='/docs'>Документация</Link>

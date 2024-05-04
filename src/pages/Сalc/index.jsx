@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import topics from './config'
 
-import style from './Home.module.scss'
+import style from './Сalc.module.scss'
 
 const MethodList = ({ methods, isOpen }) => (
 	<ul className={`${style.methodList} ${isOpen ? style.open : ''}`}>
@@ -34,7 +34,7 @@ const Topic = ({ topic, methods }) => {
 	)
 }
 
-const Home = () => {
+const Сalc = () => {
 	return (
 		<section className={style.section}>
 			<h2>Темы:</h2>
@@ -45,4 +45,4 @@ const Home = () => {
 	)
 }
 
-export default Home
+export default Сalc
