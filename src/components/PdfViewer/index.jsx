@@ -6,7 +6,7 @@ import styles from './PdfViewer.module.scss'
 const MyPdfViewer = ({ pdfUrl, isOpen, closeModal }) => {
 	const [page, setPage] = useState(1)
 	const [pages, setPages] = useState(null)
-	const [scale, setScale] = useState(1.6)
+	const [scale, setScale] = useState(1.3)
 	const canvasEl = useRef(null)
 	const [loading, numPages] = usePdf({
 		file: pdfUrl,
