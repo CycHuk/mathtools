@@ -5,6 +5,16 @@ import { eulerYavniy } from '../../../../features/topic/DY/first/eulerYavniy'
 import { eulerSPerechetom } from '../../../../features/topic/DY/first/eulerSPerechetom'
 import { predictorKorector } from '../../../../features/topic/DY/first/predictorKorector'
 
+import {
+	LineChart,
+	Line,
+	XAxis,
+	YAxis,
+	CartesianGrid,
+	Tooltip,
+	Legend,
+} from 'recharts'
+
 import RangeInput from '../../../../components/constructors/rangeInput'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -50,6 +60,7 @@ const FirstOrderPage = () => {
 	const [initialY, setInitialY] = useState(0)
 	const [solution, setSolution] = useState(null)
 	const [decision, setDecision] = useState(false)
+	const [values, setValues] = useState([])
 	const [selectedMethod, setSelectedMethod] = useState('eulerYavniy')
 
 	const handleFunctionChange = e => {
@@ -91,11 +102,23 @@ const FirstOrderPage = () => {
 					break
 			}
 
+			setValues(
+				Object.getOwnPropertyNames(solution).map(i => {
+					return {
+						x: String(Math.round(solution[i].xi * 100) / 100),
+						y: solution[i].yi,
+					}
+				})
+			)
+
+			console.log(values)
+
 			solution = transformObject(solution)
 
 			setSolution(solution)
 			setDecision(true)
 		} catch (error) {
+			console.log(error)
 			toast.error('Ошибка')
 		}
 	}
@@ -153,7 +176,26 @@ const FirstOrderPage = () => {
 				Решить
 			</button>
 
-			{decision && <TableComponent solution={solution} />}
+			{decision && (
+				<div className={style['solution-container']}>
+					<h3>График:</h3>
+					<LineChart width={600} height={300} data={values}>
+						<CartesianGrid strokeDasharray='3 3' />
+						<XAxis dataKey='x' />
+						<YAxis />
+						<Tooltip />
+						<Legend />
+						<Line type='monotone' dataKey='y' stroke='#8884d8' dot={false} />
+					</LineChart>
+				</div>
+			)}
+
+			{decision && (
+				<div className={style['solution-container']}>
+					<h3>Таблица:</h3>
+					<TableComponent solution={solution} />
+				</div>
+			)}
 		</div>
 	)
 }

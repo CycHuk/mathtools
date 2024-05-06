@@ -9,6 +9,16 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import style from './FirstOrder.module.scss'
 
+import {
+	LineChart,
+	Line,
+	XAxis,
+	YAxis,
+	CartesianGrid,
+	Tooltip,
+	Legend,
+} from 'recharts'
+
 import TableComponent from '../../../../components/table'
 
 function transformObject(inputObject) {
@@ -49,6 +59,7 @@ const SecondOrderPage = () => {
 	const [initialY, setInitialY] = useState(0)
 	const [solution, setSolution] = useState(null)
 	const [decision, setDecision] = useState(false)
+	const [values, setValues] = useState([])
 	const [selectedMethod, setSelectedMethod] = useState('ryngeKytta2poryadok')
 
 	const handleFunctionChange = e => {
@@ -86,6 +97,15 @@ const SecondOrderPage = () => {
 					toast.error('Выбран неверный метод')
 					break
 			}
+
+			setValues(
+				Object.getOwnPropertyNames(solution).map(i => {
+					return {
+						x: String(Math.round(solution[i].xi * 100) / 100),
+						y: solution[i].yi,
+					}
+				})
+			)
 
 			solution = transformObject(solution)
 
@@ -154,7 +174,26 @@ const SecondOrderPage = () => {
 				Решить
 			</button>
 
-			{decision && <TableComponent solution={solution} />}
+			{decision && (
+				<div className={style['solution-container']}>
+					<h3>График:</h3>
+					<LineChart width={600} height={300} data={values}>
+						<CartesianGrid strokeDasharray='3 3' />
+						<XAxis dataKey='x' />
+						<YAxis />
+						<Tooltip />
+						<Legend />
+						<Line type='monotone' dataKey='y' stroke='#8884d8' dot={false} />
+					</LineChart>
+				</div>
+			)}
+
+			{decision && (
+				<div className={style['solution-container']}>
+					<h3>Таблица:</h3>
+					<TableComponent solution={solution} />
+				</div>
+			)}
 		</div>
 	)
 }
