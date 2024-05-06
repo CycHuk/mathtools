@@ -55,8 +55,7 @@ const CoordinateInput = ({ onCoordinatesChange }) => {
 							<td>
 								<input
 									type='number'
-									value={yValues[index]}
-									onChange={e =>
+									onBlur={e =>
 										handleYValueChange(index, parseFloat(e.target.value))
 									}
 								/>
@@ -64,9 +63,8 @@ const CoordinateInput = ({ onCoordinatesChange }) => {
 							<td>
 								<input
 									type='number'
-									value={xValues[index]}
-									onChange={e =>
-										handleXValueChange(index, parseInt(e.target.value))
+									onBlur={e =>
+										handleXValueChange(index, parseFloat(e.target.value))
 									}
 								/>
 							</td>
