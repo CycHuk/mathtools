@@ -1,75 +1,68 @@
 import React, { useState } from 'react'
 import PdfViewer from '../../components/PdfViewer'
+import topics from './config'
+
 import style from './Docs.module.scss'
 
-const topics = [
-	{
-		id: 1,
-		name: 'Математические и численные методы решения задач линейной алгебры',
-		pdfUrl: './pdf/topic1.pdf',
-	},
-	{
-		id: 2,
-		name: 'Решение нелинейных уравнений и их систем',
-		pdfUrl: './pdf/topic2.pdf',
-	},
-	{
-		id: 3,
-		name: 'Задача обработки экспериментальных данных физических экспериментов',
-		pdfUrl: './pdf/topic3.pdf',
-	},
-	{
-		id: 4,
-		name: 'Численное интегрирование',
-		pdfUrl: './pdf/topic4.pdf',
-	},
-	{
-		id: 5,
-		name: 'Численное дифференцирование',
-		pdfUrl: './pdf/topic5.pdf',
-	},
-	{
-		id: 6,
-		name: 'Решение ОДУ',
-		pdfUrl: './pdf/topic6.pdf',
-	},
-]
+const MethodList = ({ methods, isOpen, openModal }) => (
+	<ul className={`${style.methodList} ${isOpen ? style.open : ''}`}>
+		{methods.map((method, index) => (
+			<li
+				key={index}
+				className={`${style.method} ${isOpen ? style.methodAppear : ''}`}
+				onClick={() => openModal(method.url)} // Открываем модальное окно с PDF при клике на метод
+			>
+				{method.name}
+			</li>
+		))}
+	</ul>
+)
+
+const Topic = ({ topic, methods, openModal }) => {
+	const [isOpen, setIsOpen] = useState(false)
+
+	const toggleOpen = () => {
+		setIsOpen(!isOpen)
+	}
+
+	return (
+		<div>
+			<div onClick={toggleOpen} className={style.topic}>
+				{topic}
+			</div>
+			<MethodList methods={methods} isOpen={isOpen} openModal={openModal} />
+		</div>
+	)
+}
 
 const DocsPage = () => {
 	const [modalIsOpen, setModalIsOpen] = useState(false)
-	const [selectedTopic, setSelectedTopic] = useState(null)
+	const [pdfUrl, setPdfUrl] = useState(null)
 
-	const openModal = topic => {
-		setSelectedTopic(topic)
+	const openModal = url => {
+		setPdfUrl(url)
 		setModalIsOpen(true)
 	}
 
 	const closeModal = () => {
-		setSelectedTopic(null)
 		setModalIsOpen(false)
 	}
-
-	const Topic = ({ topic }) => (
-		<div
-			className={`${style.topic} ${
-				selectedTopic === topic.id ? style.selected : ''
-			}`}
-			onClick={() => openModal(topic)}
-		>
-			<h3>{topic.name}</h3>
-		</div>
-	)
 
 	return (
 		<section className={style.section}>
 			<h2>Документация:</h2>
-			{topics.map(topic => (
-				<Topic key={topic.id} topic={topic} />
+			{topics.map((topic, index) => (
+				<Topic
+					key={index}
+					topic={topic.topic}
+					methods={topic.methods}
+					openModal={openModal}
+				/>
 			))}
 
-			{selectedTopic && (
+			{modalIsOpen && (
 				<PdfViewer
-					pdfUrl={selectedTopic.pdfUrl}
+					pdfUrl={pdfUrl}
 					isOpen={modalIsOpen}
 					closeModal={closeModal}
 				/>
