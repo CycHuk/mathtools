@@ -62,27 +62,28 @@ import {evaluateFunction} from "../../NonlinearEquations/functions";
 
     */
 export function solver(funcsStrix, x0, y0, z0, h, n){
-    let res = {}
-    let x = x0
-    let y = y0
-    let z = z0
+    let res = {}; // Объект для хранения результатов
+    let x = x0; // Инициализация начальных значений x
+    let y = y0; // Инициализация начальных значений y
+    let z = z0; // Инициализация начальных значений z
 
-    for (let j = 0; j < n; j++){
-        let temp = {}
-        temp[`x_${j}`] = x
-        temp[`y_${j}`] = y
-        temp[`z_${j}`] = z
-        for(let i = 0; i < funcsStrix.length; i++){
-            temp[`k1${i}`] = evaluateFunction(funcsStrix[i], x, y, z)
-            temp[`k2${i}`] = evaluateFunction(funcsStrix[i], x + h/2, y + temp[`k1${i}`] / 2, z + temp[`k1${i}`] / 2)
-            temp[`k3${i}`] = evaluateFunction(funcsStrix[i], x + h/2, y + temp[`k2${i}`] / 2, z + temp[`k2${i}`] / 2)
-            temp[`k4${i}`] = evaluateFunction(funcsStrix[i], x, y + temp[`k3${i}`], z + temp[`k3${i}`])
+    for (let j = 0; j < n; j++){ // Цикл по числу итераций n
+        let temp = {}; // Временный объект для хранения значений на текущем шаге
+        temp[`x_${j}`] = x; // Запись текущего значения x
+        temp[`y_${j}`] = y; // Запись текущего значения y
+        temp[`z_${j}`] = z; // Запись текущего значения z
+        for(let i = 0; i < funcsStrix.length; i++){ // Цикл по функциям в системе уравнений
+            temp[`k1${i}`] = evaluateFunction(funcsStrix[i], x, y, z); // Вычисление k1
+            temp[`k2${i}`] = evaluateFunction(funcsStrix[i], x + h/2, y + temp[`k1${i}`] / 2, z + temp[`k1${i}`] / 2); // Вычисление k2
+            temp[`k3${i}`] = evaluateFunction(funcsStrix[i], x + h/2, y + temp[`k2${i}`] / 2, z + temp[`k2${i}`] / 2); // Вычисление k3
+            temp[`k4${i}`] = evaluateFunction(funcsStrix[i], x, y + temp[`k3${i}`], z + temp[`k3${i}`]); // Вычисление k4
         }
-        temp[`x_${j + 1}`] = x = x + h
-        temp[`y_${j + 1}`] = y = y + h / 6 * (temp[`k10`] + 2 * temp[`k20`] + 2 * temp[`k30`] + temp[`k40`])
-        temp[`z_${j + 1}`] = z = z + h / 6 * (temp[`k11`] + 2 * temp[`k21`] + 2 * temp[`k31`] + temp[`k41`])
-        res[j] = temp
+        temp[`x_${j + 1}`] = x = x + h; // Вычисление следующего значения x
+        temp[`y_${j + 1}`] = y = y + h / 6 * (temp[`k10`] + 2 * temp[`k20`] + 2 * temp[`k30`] + temp[`k40`]); // Вычисление следующего значения y
+        temp[`z_${j + 1}`] = z = z + h / 6 * (temp[`k11`] + 2 * temp[`k21`] + 2 * temp[`k31`] + temp[`k41`]); // Вычисление следующего значения z
+        res[j] = temp; // Запись значений в объект результата для текущей итерации
     }
 
-    return res
+    return res; // Возврат объекта с результатами
 }
+
