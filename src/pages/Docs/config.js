@@ -73,6 +73,98 @@ const topics = [
 			},
 		],
 	},
+	{
+		topic: 'Задача обработки экспериментальных данных физических экспериментов',
+		methods: [
+			{
+				name: 'полином Лагранжа',
+				url: './pdf/topic3/method1.pdf',
+			},
+			{
+				name: 'Интерполяция',
+				url: './pdf/topic3/method2.pdf',
+			},
+			{
+				name: 'Аппроксимация',
+				url: './pdf/topic3/method3.pdf',
+			},
+		],
+	},
+	{
+		topic: 'Численное интегрирование',
+		methods: [
+			{
+				name: 'Метод Прямоугольника',
+				url: './pdf/topic4/method1.pdf',
+			},
+			{
+				name: 'Метод Трапеции',
+				url: './pdf/topic4/method2.pdf',
+			},
+			{
+				name: 'Метод Симсона (парабол)',
+				url: './pdf/topic4/method3.pdf',
+			},
+			{
+				name: 'Метод Чебышева',
+				url: './pdf/topic4/method4.pdf',
+			},
+			{
+				name: 'Метод Лежандра-Гаусса',
+				url: './pdf/topic4/method5.pdf',
+			},
+			{
+				name: 'Разложение в ряд Тейлора',
+				url: './pdf/topic4/method6.pdf',
+			},
+		],
+	},
+	{
+		topic: 'Численное дифференцирование',
+		methods: [
+			{
+				name: 'Конечно-разностная аппроксимация',
+				url: './pdf/topic5/method1.pdf',
+			},
+			{
+				name: 'Метод неопределенных коэффициентов',
+				url: './pdf/topic5/method2.pdf',
+			},
+		],
+	},
+	{
+		topic: 'Решение ОДУ',
+		methods: [
+			{
+				name: 'М. конечных разностей',
+				url: './pdf/topic6/method1.pdf',
+			},
+			{
+				name: 'Явный м. Эйлера',
+				url: './pdf/topic6/method2.pdf',
+			},
+			{
+				name: 'Неявный м. Эйлера',
+				url: './pdf/topic6/method3.pdf',
+			},
+			{
+				name: 'Неявная формула второго порядка точности',
+				url: './pdf/topic6/method4.pdf',
+			},
+			{
+				name: 'М. Эйлера с пересчетом',
+				url: './pdf/topic6/method5.pdf',
+			},
+			{
+				name: 'Предиктор-корректор',
+				url: './pdf/topic6/method6.pdf',
+			},
+			{
+				name: 'Рунге-Кутте 2 порядка',
+				url: './pdf/topic6/method7.pdf',
+			},
+		],
+	},
 ]
 
 export default topics
