@@ -1,81 +1,42 @@
-.section {
-	padding: 20px;
-}
-
-h2 {
-	font-size: 24px;
-	margin-bottom: 10px;
-}
-
-.topic {
-	margin-bottom: 15px;
-	cursor: pointer;
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	transition: background-color 0.3s ease;
-
-	&:hover {
-		background-color: #f0f0f0;
-	}
-
-	&.selected {
-		background-color: #e0e0e0;
-	}
-
-	h3 {
-		font-size: 18px;
-		margin-bottom: 5px;
-	}
-}
-
-.pdf-container {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	.pdf-viewer {
-		max-width: 90%;
-		max-height: 90%;
-		overflow: auto;
-		background-color: white;
-		padding: 20px;
-		border-radius: 10px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-	}
-}
+/* previewPage.module.scss */
 
 .methodList {
 	list-style: none;
-	padding-left: 0;
-	margin-top: 10px;
-	overflow: hidden;
+	padding: 0;
 	max-height: 0;
-	transition: max-height 0.3s ease;
+	overflow: hidden;
+	transition: max-height 0.3s ease-out;
+	margin-top: 10px; /* Добавим небольшой отступ между списками */
+}
 
-	&.open {
-		max-height: 500px; /* Adjust as needed */
-	}
+.open {
+	max-height: 1000px;
 }
 
 .method {
-	padding: 5px 0;
-	font-size: 16px;
 	cursor: pointer;
-	transition: transform 0.3s ease;
+	opacity: 0;
+	transform: translateY(-20px);
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	padding: 10px;
+}
 
-	&:hover {
-		transform: scale(1.05);
-	}
+.methodAppear {
+	opacity: 1;
+	transform: translateY(0);
+}
 
-	&.methodAppear {
-		opacity: 1;
-		transform: translateY(0);
+.topic {
+	cursor: pointer;
+
+	font-weight: 600;
+	padding-bottom: 10px;
+}
+
+.section {
+	h2 {
+		font-size: 24px;
+		font-weight: 900;
+		padding-bottom: 10px;
 	}
 }
