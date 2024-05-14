@@ -1,23 +1,44 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Modal from 'react-modal'
-import { usePdf } from 'react-pdf-js'
 import styles from './PdfViewer.module.scss'
 
 const MyPdfViewer = ({ pdfUrl, isOpen, closeModal }) => {
-	const [page, setPage] = useState(1)
-	const [pages, setPages] = useState(null)
+	const [numPages, setNumPages] = useState(null)
 	const [scale, setScale] = useState(1)
-	const canvasEl = useRef(null)
-	const [loading, numPages] = usePdf({
-		file: pdfUrl,
-		page,
-		canvasEl,
-		scale,
-	})
+	const canvasEls = useRef([])
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		setPages(numPages)
-	}, [numPages])
+		const loadingTask = window.pdfjsLib.getDocument(pdfUrl)
+		loadingTask.promise.then(pdf => {
+			setNumPages(pdf.numPages)
+			setLoading(false)
+		})
+	}, [pdfUrl])
+
+	useEffect(() => {
+		if (!loading) {
+			for (let i = 0; i < numPages; i++) {
+				const canvas = canvasEls.current[i]
+				const renderTask = window.pdfjsLib
+					.getDocument(pdfUrl)
+					.promise.then(pdf => {
+						return pdf.getPage(i + 1)
+					})
+					.then(page => {
+						const viewport = page.getViewport({ scale })
+						const canvasContext = canvas.getContext('2d')
+						canvas.height = viewport.height
+						canvas.width = viewport.width
+						const renderContext = {
+							canvasContext,
+							viewport,
+						}
+						page.render(renderContext)
+					})
+			}
+		}
+	}, [loading, numPages, pdfUrl, scale])
 
 	const handleZoomIn = () => {
 		setScale(scale + 0.1)
@@ -29,90 +50,32 @@ const MyPdfViewer = ({ pdfUrl, isOpen, closeModal }) => {
 		}
 	}
 
-	const handlePreviousPage = () => {
-		if (page > 1) {
-			setPage(page - 1)
-		}
-	}
-
-	const handleNextPage = () => {
-		if (page < pages) {
-			setPage(page + 1)
-		}
-	}
-
-	const handleDownloadPdf = () => {
-		// Создай ссылку для скачивания PDF
-		const link = document.createElement('a')
-		link.href = pdfUrl
-		link.download = 'document.pdf' // Имя файла для скачивания
-		document.body.appendChild(link)
-		link.click()
-		document.body.removeChild(link)
-	}
-
-	const renderPagination = () => {
-		if (!pages) {
-			return null
-		}
-		const previousButton = (
-			<button
-				className={styles.pdfViewerButton}
-				onClick={handlePreviousPage}
-				disabled={page === 1}
-			>
-				Предыдущая
-			</button>
-		)
-		const nextButton = (
-			<button
-				className={styles.pdfViewerButton}
-				onClick={handleNextPage}
-				disabled={page === pages}
-			>
-				Следующая
-			</button>
-		)
-		return (
-			<div className={styles.pdfViewerPagination}>
-				{previousButton}
-				<span>{`Страница ${page} из ${pages}`}</span>
-				{nextButton}
-			</div>
-		)
-	}
-
 	return (
 		<Modal isOpen={isOpen} onRequestClose={closeModal} className={styles.modal}>
+			<div className={styles.pdfViewerHeader}>
+				<div className={styles.zoomButtons}>
+					<button className={styles.zoomButton} onClick={handleZoomOut}>
+						Уменьшить
+					</button>
+					<button className={styles.zoomButton} onClick={handleZoomIn}>
+						Увеличить
+					</button>
+				</div>
+				<button className={styles.closeButton} onClick={closeModal}>
+					Закрыть
+				</button>
+			</div>
 			<div className={styles.pdfViewerContainer}>
 				{loading && <span>Loading...</span>}
-				<div className={styles.pdfViewerContent}>
-					<div className={styles.pdfViewerControls}>
-						<div className={styles.pdfViewerZoomButtons}>
-							<button className={styles.pdfViewerButton} onClick={handleZoomIn}>
-								Увеличить
-							</button>
-							<button
-								className={styles.pdfViewerButton}
-								onClick={handleZoomOut}
-							>
-								Уменьшить
-							</button>
+				{!loading &&
+					Array.from(Array(numPages).keys()).map(index => (
+						<div key={index} className={styles.pdfPage}>
+							<canvas
+								ref={ref => (canvasEls.current[index] = ref)}
+								className={styles.pdfViewerCanvas}
+							/>
 						</div>
-						<div className={styles.pdfViewerDownloadButton}>
-							<button
-								className={styles.pdfViewerButton}
-								onClick={handleDownloadPdf}
-							>
-								Скачать PDF
-							</button>
-						</div>
-					</div>
-					<div className={styles.pdfViewerCanvasWrapper}>
-						<canvas ref={canvasEl} className={styles.pdfViewerCanvas} />
-					</div>
-					{renderPagination()}
-				</div>
+					))}
 			</div>
 		</Modal>
 	)
