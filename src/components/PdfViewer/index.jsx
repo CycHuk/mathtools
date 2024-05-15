@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import Modal from 'react-modal'
 import styles from './PdfViewer.module.scss'
 
-const MyPdfViewer = ({ pdfUrl, isOpen, closeModal }) => {
+const MyPdfViewer = ({ pdfUrl, isOpen, closeModal, scroll }) => {
+	const [scrollLevel, setScroll] = useState(scroll)
 	const [numPages, setNumPages] = useState(null)
 	const [scale, setScale] = useState(1)
 	const canvasEls = useRef([])
@@ -36,9 +37,15 @@ const MyPdfViewer = ({ pdfUrl, isOpen, closeModal }) => {
 						}
 						page.render(renderContext)
 					})
+					.then(_ => {
+						const modal = document.getElementById('treasd')
+						if (modal) {
+							modal.scrollTop = scrollLevel
+						}
+					})
 			}
 		}
-	}, [loading, numPages, pdfUrl, scale])
+	}, [loading, numPages, pdfUrl, scale, scrollLevel])
 
 	const handleZoomIn = () => {
 		setScale(scale + 0.1)
@@ -51,7 +58,12 @@ const MyPdfViewer = ({ pdfUrl, isOpen, closeModal }) => {
 	}
 
 	return (
-		<Modal isOpen={isOpen} onRequestClose={closeModal} className={styles.modal}>
+		<Modal
+			isOpen={isOpen}
+			onRequestClose={closeModal}
+			className={styles.modal}
+			id='treasd'
+		>
 			<div className={styles.pdfViewerHeader}>
 				<div className={styles.zoomButtons}>
 					<button className={styles.zoomButton} onClick={handleZoomOut}>

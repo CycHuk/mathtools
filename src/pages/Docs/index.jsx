@@ -10,7 +10,7 @@ const MethodList = ({ methods, isOpen, openModal }) => (
 			<li
 				key={index}
 				className={`${style.method} ${isOpen ? style.methodAppear : ''}`}
-				onClick={() => openModal(method.url)} // Открываем модальное окно с PDF при клике на метод
+				onClick={() => openModal(method)}
 			>
 				{method.name}
 			</li>
@@ -38,9 +38,11 @@ const Topic = ({ topic, methods, openModal }) => {
 const DocsPage = () => {
 	const [modalIsOpen, setModalIsOpen] = useState(false)
 	const [pdfUrl, setPdfUrl] = useState(null)
+	const [scroll, setScroll] = useState(null)
 
-	const openModal = url => {
-		setPdfUrl(url)
+	const openModal = method => {
+		setPdfUrl(method.url)
+		setScroll(method.scrollLevel)
 		setModalIsOpen(true)
 	}
 
@@ -65,6 +67,7 @@ const DocsPage = () => {
 					pdfUrl={pdfUrl}
 					isOpen={modalIsOpen}
 					closeModal={closeModal}
+					scroll={scroll}
 				/>
 			)}
 		</section>
