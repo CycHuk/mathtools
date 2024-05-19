@@ -15,7 +15,7 @@ const topics = [
 			{
 				name: 'Пример: Метод Гаусса для решения СЛАУ',
 				url: './pdf/topic1/method2.pdf',
-				scrollLevel: 1400,
+				scrollLevel: 1800,
 			},
 			{
 				name: 'Теория: Метод Гаусса-Жордана для решения СЛАУ',
