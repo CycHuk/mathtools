@@ -1,33 +1,46 @@
-const nerdamer = require('nerdamer/all')
+// Импорт модуля nerdamer
+const nerdamer = require('nerdamer/all');
 
+// Функция интерполяции Лагранжа
 function lagrangeInterpolation(xValues, yValues) {
-	const n = xValues.length
-	let polynomial = ''
+	// Количество точек
+	const n = xValues.length;
+	// Полином для интерполяции
+	let polynomial = '';
 
+	// Цикл для формирования полинома
 	for (let i = 0; i < n; i++) {
-		let term = ''
+		let term = '';
 
+		// Цикл для каждого члена полинома
 		for (let j = 0; j < n; j++) {
 			if (i !== j) {
-				const numerator = `(x - ${xValues[j]})`
-				const denominator = `(${xValues[i]} - ${xValues[j]})`
-				term += `${numerator} / ${denominator} * `
+				// Вычисление числителя и знаменателя
+				const numerator = `(x - ${xValues[j]})`;
+				const denominator = `(${xValues[i]} - ${xValues[j]})`;
+				term += `${numerator} / ${denominator} * `;
 			}
 		}
 
-		term += yValues[i].toString()
+		// Добавление значения y к члену полинома
+		term += yValues[i].toString();
 
+		// Добавление "+" если это не первый член полинома
 		if (i !== 0) {
-			polynomial += ' + '
+			polynomial += ' + ';
 		}
 
-		polynomial += `(${term})`
+		// Добавление члена полинома к общему полиному
+		polynomial += `(${term})`;
 	}
 
-	// Simplify the polynomial using nerdamer
-	polynomial = nerdamer(polynomial).expand().toString()
+	// Упрощение полинома с помощью nerdamer
+	polynomial = nerdamer(polynomial).expand().toString();
 
-	return polynomial
+	// Возврат полинома
+	return polynomial;
 }
 
-export default lagrangeInterpolation
+// Экспорт функции интерполяции Лагранжа по умолчанию
+export default lagrangeInterpolation;
+

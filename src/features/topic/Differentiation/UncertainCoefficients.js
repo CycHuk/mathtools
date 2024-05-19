@@ -1,7 +1,11 @@
+// Импорт функции evaluateFunction из файла functions в папке NonlinearEquations
 import { evaluateFunction } from '../NonlinearEquations/functions'
 
+// Функция approximateDerivative вычисляет приближенные значения производных функции в точке x с использованием различных методов
 function approximateDerivative(funcStr, x, h, derivativeOrder, errorOrder) {
+	// Проверка порядка производной
 	if (derivativeOrder === 1) {
+		// Проверка порядка ошибки для первой производной
 		if (errorOrder === 2) {
 			return mnk1_2(funcStr, x, h)
 		} else if (errorOrder === 4) {
@@ -12,6 +16,7 @@ function approximateDerivative(funcStr, x, h, derivativeOrder, errorOrder) {
 			throw new Error('Unsupported error order for first derivative')
 		}
 	} else if (derivativeOrder === 2) {
+		// Проверка порядка ошибки для второй производной
 		if (errorOrder === 2) {
 			return mnk2_2(funcStr, x, h)
 		} else if (errorOrder === 4) {
@@ -26,6 +31,7 @@ function approximateDerivative(funcStr, x, h, derivativeOrder, errorOrder) {
 	}
 }
 
+// Функция mnk1_2 вычисляет первую производную с использованием метода наименьших квадратов с порядком ошибки 2
 function mnk1_2(funcStr, x, h) {
 	const x_1 = x - h
 	const x1 = x + h
@@ -36,6 +42,7 @@ function mnk1_2(funcStr, x, h) {
 	return rez
 }
 
+// Функция mnk1_4 вычисляет первую производную с использованием метода наименьших квадратов с порядком ошибки 4
 function mnk1_4(funcStr, x, h) {
 	const x_2 = x - 2 * h
 	const x_1 = x - h
@@ -51,6 +58,7 @@ function mnk1_4(funcStr, x, h) {
 	return rez
 }
 
+// Функция mnk1_6 вычисляет первую производную с использованием метода наименьших квадратов с порядком ошибки 6
 function mnk1_6(funcStr, x, h) {
 	const x_3 = x - 3 * h
 	const x_2 = x - 2 * h
@@ -70,6 +78,7 @@ function mnk1_6(funcStr, x, h) {
 	return rez
 }
 
+// Функция mnk2_2 вычисляет вторую производную с использованием метода наименьших квадратов с порядком ошибки 2
 function mnk2_2(funcStr, x, h) {
 	const x_1 = x - h
 	const x1 = x + h
@@ -82,6 +91,7 @@ function mnk2_2(funcStr, x, h) {
 	return rez
 }
 
+// Функция mnk2_4 вычисляет вторую производную с использованием метода наименьших квадратов с порядком ошибки 4
 function mnk2_4(funcStr, x, h) {
 	const x_2 = x - 2 * h
 	const x_1 = x - h
@@ -98,6 +108,7 @@ function mnk2_4(funcStr, x, h) {
 	return rez
 }
 
+// Функция mnk2_6 вычисляет вторую производную с использованием метода наименьших квадратов с порядком ошибки 6
 function mnk2_6(funcStr, x, h) {
 	const x_3 = x - 3 * h
 	const x_2 = x - 2 * h
@@ -118,4 +129,5 @@ function mnk2_6(funcStr, x, h) {
 	return rez
 }
 
+// Экспор
 export default approximateDerivative

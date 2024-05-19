@@ -1,13 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+// Импорт React и ReactDOM
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-import { BrowserRouter } from 'react-router-dom'
+// Импорт BrowserRouter из react-router-dom
+import { BrowserRouter } from 'react-router-dom';
 
-import App from './App'
+// Импорт компонента App из './App'
+import App from './App';
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+// Создание корневого элемента ReactDOM
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Рендеринг компонента App внутри BrowserRouter
 root.render(
 	<BrowserRouter>
 		<App />
 	</BrowserRouter>
-)
+);
+
